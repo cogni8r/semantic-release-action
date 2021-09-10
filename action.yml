@@ -7,7 +7,7 @@ inputs:
   gpg-passphrase:
     description: 'GPG passphrase'
     required: true
-  bot-token:
+  github-token:
     description: 'Bot token'
     required: true
   npm-token:
@@ -37,14 +37,17 @@ runs:
         git_commit_gpgsign: true
     - name: Install dependencies
       run: npm ci
+      shell: bash
     - name: Install semantic-release plugins
       run: npm i @semantic-release/changelog @semantic-release/git @semantic-release/exec replace semantic-release-config-cog
+      shell: bash
     - name: Release
       env:
-        GITHUB_TOKEN: ${{ inputs.bot-token }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
         NPM_TOKEN: ${{ inputs.npm-token }}
         GIT_AUTHOR_NAME: ${{ inputs.git-author-name }}
         GIT_AUTHOR_EMAIL: ${{ inputs.git-author-email }}
         GIT_COMMITTER_NAME:  ${{ inputs.git-author-name }}
         GIT_COMMITTER_EMAIL:  ${{ inputs.git-author-email }}
-      run: npx semantic-release
+      run: npx semantic-release --dry-run
+      shell: bash
