@@ -4,6 +4,14 @@
 
 ## Usage
 
+Add `release.config.cjs` config file:
+
+```js
+const getConfig = require('semantic-release-config-cog');
+
+module.exports = getConfig(false);
+```
+
 Add new [GitHub Workflow](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions):
 
 ```yaml
