@@ -39,7 +39,7 @@ runs:
       run: npm ci
       shell: bash
     - name: Install semantic-release plugins
-      run: npm i @semantic-release/changelog@5.x @semantic-release/git@9.x @semantic-release/exec@5.x replace@1.x semantic-release-config-cog@1.x
+      run: npm i @semantic-release/changelog@6.x @semantic-release/git@10.x @semantic-release/exec@6.x replace@1.x semantic-release-config-cog@1.x --no-save
       shell: bash
     - name: Release
       env:
